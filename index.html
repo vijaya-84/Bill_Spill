@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bill Spill</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body  style="background-color: #FF671F">
+    <h2 class=" text-center mt-5">Bill Spill</h2>
+    <div
+    class="col-6 p-4 mx-auto my-4 bg-light border rounded border-secondary"
+   
+      style="background-color: #FFFFFF"
+    >
+      <div
+        id="errMsg"
+        class="alert alert-danger col-12 mt-3"
+        role="alert"
+        style="display: none"
+      >
+        Please fill out the empty fields
+      </div>
+      <div class="row" style="background-color: #FFFFFF" >
+        <div class="col-lg-6 col-md-12 col-sm-12 p-3">
+          <form class="was-validated">
+            <div class="mb-2">
+              <label for="totalAmount" class="form-label">Total Amount</label>
+              <input
+                type="number"
+                name="totalAmount"
+                id="totalAmount"
+                class="form-control"
+                placeholder="Enter Total Bill Amount (in ₹)"
+                min="1"
+                required
+              />
+            </div>
+
+            <!-- Radio Buttons to take input of Tip % Starts -->
+            <div class="mb-2">
+              <label class="form-label">Select Tip</label>
+              <div class="mb-2">
+                <input
+                  value="5"
+                  type="radio"
+                  class="btn-check"
+                  name="tip"
+                  id="tip5"
+                  autocomplete="off"
+                  required
+                />
+                <label class="btn btn-outline-success my-2 w-25 me-3" for="tip5"
+                  >5 %
+                </label>
+                <input
+                  value="10"
+                  type="radio"
+                  class="btn-check"
+                  name="tip"
+                  id="tip10"
+                  autocomplete="off"
+                />
+                <label
+                  class="btn btn-outline-success my-2 w-25 me-3"
+                  for="tip10"
+                  >10 %
+                </label>
+                <input
+                  value="15"
+                  type="radio"
+                  class="btn-check"
+                  name="tip"
+                  id="tip15"
+                  autocomplete="off"
+                />
+                <label
+                  class="btn btn-outline-success my-2 w-25 me-3"
+                  for="tip15"
+                  >15 %
+                </label>
+                <input
+                  value="25"
+                  type="radio"
+                  class="btn-check"
+                  name="tip"
+                  id="tip25"
+                  autocomplete="off"
+                />
+                <label
+                  class="btn btn-outline-success my-2 w-25 me-3"
+                  for="tip25"
+                  >25 %
+                </label>
+                <input
+                  value="50"
+                  type="radio"
+                  class="btn-check"
+                  name="tip"
+                  id="tip50"
+                  autocomplete="off"
+                />
+                <label
+                  class="btn btn-outline-success my-2 w-25 me-3"
+                  for="tip50"
+                  >50 %
+                </label>
+                <input
+                  value="75"
+                  type="radio"
+                  class="btn-check"
+                  name="tip"
+                  id="tip75"
+                  autocomplete="off"
+                />
+                <label
+                  class="btn btn-outline-success my-2 w-25 me-3"
+                  for="tip75"
+                  >75 %
+                </label>
+              </div>
+            </div>
+            <!-- Radio Buttons to take input of Tip % Ends -->
+
+            <div class="mb-2">
+              <label for="noOfPeople" class="form-label">No. Of People</label>
+              <input
+                type="number"
+                name="noOfPeople"
+                id="noOfPeople"
+                class="form-control"
+                placeholder="No. of people"
+                min="1"
+                required
+              />
+            </div>
+            <div class="my-3 btn-group">
+              <button
+                type="submit"
+                id="generateBill"
+                class="btn btn-success rounded w-auto me-3"
+              >
+                Generate Bill
+              </button>
+              <button
+                type="button"
+                id="rstBtn"
+                class="btn btn-success rounded w-auto"
+                style="display: none"
+                onclick="resetFields()"
+              >
+                Reset
+              </button>
+            </div>
+          </form>
+        </div>
+
+       
+      </div>
+       <!-- Calculation Result Part Starts -->
+       <div
+       class="col-lg-6 col-md-12 col-sm-12 rounded-5 p-4"
+       style="background-color: #046A38"
+     >
+       <div class="row mb-5">
+         <div class="col-lg-6"> 
+           <p class="m-0 font-monospace fs-5" style="color: #f3e4ff">
+             Tip Amount
+           </p>
+           <span style="color: #c39fff"> /person </span>
+         </div>
+         <div class="col-lg-6">
+           <p
+             class="m-0 text-end font-monospace fs-2"
+             style="color: #f3e4ff"
+             id="tipAmntPerPerson"
+           >
+             ₹ 0.00
+           </p>
+         </div>
+       </div>
+
+       <div class="row mt-5">
+         <div class="col-lg-6">
+           <p class="m-0 font-monospace fs-5" style="color: #f3e4ff">
+             Total Amount
+           </p>
+           <span style="color: #c39fff"> /person </span>
+         </div>
+         <div class="col-lg-6">
+           <p
+             class="m-0 text-end font-monospace fs-2"
+             style="color: #f3e4ff"
+             id="totalAmntPerPerson"
+           >
+             ₹ 0.00
+           </p>
+         </div>
+       </div>
+     </div>
+     <!-- Calculation Result Part Starts -->
+    </div>
+    
+    <!-- Footer -->
+<footer class="page-footer" style="background-color: #06038D">
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3" style="background-color: #FFFFFF">© 
+      <a href="/"> Vijju</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+    <script src="./script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
